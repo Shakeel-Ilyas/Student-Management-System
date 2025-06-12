@@ -1,8 +1,8 @@
-# Project Name "angular-student-management-system"
+# Project Name "Student-Management-System"
 
 Student Management System is an Angular-based practice project designed to manage student records efficiently. The application allows users to add, update, and delete student details. It also features a search functionality to find students by name and a filter option to view students based on their gender.
 
-# AngularStudentManagementSystem
+# StudentManagementSystem
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 18.2.9.
 

@@ -5,7 +5,6 @@ import {
   NgClass,
   NgFor,
   NgIf,
-  PercentPipe,
   UpperCasePipe,
 } from '@angular/common';
 import {
@@ -137,10 +136,8 @@ export class AdminComponent implements OnInit {
       this.Marks.nativeElement.value,
       this.Fee.nativeElement.value
     );
-    // this.students = this.studentService.students;
     this.isInserting = false;
 
-    // this.students = this.studentService.filterStudentByGender(this.filterText);
     this.totalStudents = new Promise((resolve, rejection) => {
       resolve(this.students.length);
     });

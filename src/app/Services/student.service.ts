@@ -87,10 +87,6 @@ export class StudentService {
     let id = this.students.length + 1;
     let student = new Student(id, name, gender, dob, course, marks, fee);
     this.students.push(student);
-
-    // let studentCopy = [...this.students];
-    // studentCopy.push(student);
-    // this.students = studentCopy;
   }
 
   DeleteStudent(studentId: number) {
