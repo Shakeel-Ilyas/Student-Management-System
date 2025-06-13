@@ -128,19 +128,43 @@ export class AdminComponent implements OnInit {
     this.isInserting = false;
   }
   OnInsertSaved() {
-    this.studentService.CreateStudent(
-      this.Name.nativeElement.value,
-      this.Gender.nativeElement.value,
-      this.Dob.nativeElement.value,
-      this.Course.nativeElement.value,
-      this.Marks.nativeElement.value,
+    if (
+      this.Name.nativeElement.value &&
+      this.Dob.nativeElement.value &&
+      this.Marks.nativeElement.value &&
       this.Fee.nativeElement.value
-    );
-    this.isInserting = false;
+    ) {
+      this.studentService.CreateStudent(
+        this.Name.nativeElement.value,
+        this.Gender.nativeElement.value,
+        this.Dob.nativeElement.value,
+        this.Course.nativeElement.value,
+        this.Marks.nativeElement.value,
+        this.Fee.nativeElement.value
+      );
 
-    this.totalStudents = new Promise((resolve, rejection) => {
-      resolve(this.students.length);
-    });
+      this.isInserting = false;
+      this.students = this.studentService.filterStudentByGender(
+        this.filterText
+      );
+
+      this.totalStudents = new Promise((resolve, rejection) => {
+        resolve(this.students.length);
+      });
+    } else {
+      this.Name.nativeElement.value
+        ? (this.Name.nativeElement.style.border = 'none')
+        : (this.Name.nativeElement.style.border = '2px solid red');
+      this.Dob.nativeElement.value
+        ? (this.Dob.nativeElement.style.border = 'none')
+        : (this.Dob.nativeElement.style.border = '2px solid red');
+      this.Marks.nativeElement.value
+        ? (this.Marks.nativeElement.style.border = 'none')
+        : (this.Marks.nativeElement.style.border = '2px solid red');
+      this.Fee.nativeElement.value
+        ? (this.Fee.nativeElement.style.border = 'none')
+        : (this.Fee.nativeElement.style.border = '2px solid red');
+    }
   }
 
   OnEditClicked(stdId: number) {
@@ -161,15 +185,36 @@ export class AdminComponent implements OnInit {
   }
 
   OnEditSaved(student: Student) {
-    student.name = this.editName.nativeElement.value;
-    student.gender = this.editGender.nativeElement.value;
-    student.dob = this.editDob.nativeElement.value;
-    student.course = this.editCourse.nativeElement.value;
-    student.marks = this.editMarks.nativeElement.value;
-    student.fee = this.editFee.nativeElement.value;
+    if (
+      this.editName.nativeElement.value &&
+      this.editDob.nativeElement.value &&
+      this.editMarks.nativeElement.value &&
+      this.editFee.nativeElement.value
+    ) {
+      student.name = this.editName.nativeElement.value;
+      student.gender = this.editGender.nativeElement.value;
+      student.dob = this.editDob.nativeElement.value;
+      student.course = this.editCourse.nativeElement.value;
+      student.marks = this.editMarks.nativeElement.value;
+      student.fee = this.editFee.nativeElement.value;
 
-    this.isEditing = false;
-
-    this.students = this.studentService.filterStudentByGender(this.filterText);
+      this.isEditing = false;
+      this.students = this.studentService.filterStudentByGender(
+        this.filterText
+      );
+    } else {
+      this.editName.nativeElement.value
+        ? (this.editName.nativeElement.style.border = 'none')
+        : (this.editName.nativeElement.style.border = '2px solid red');
+      this.editDob.nativeElement.value
+        ? (this.editDob.nativeElement.style.border = 'none')
+        : (this.editDob.nativeElement.style.border = '2px solid red');
+      this.editMarks.nativeElement.value
+        ? (this.editMarks.nativeElement.style.border = 'none')
+        : (this.editMarks.nativeElement.style.border = '2px solid red');
+      this.editFee.nativeElement.value
+        ? (this.editFee.nativeElement.style.border = 'none')
+        : (this.editFee.nativeElement.style.border = '2px solid red');
+    }
   }
 }

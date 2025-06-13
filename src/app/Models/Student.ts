@@ -3,7 +3,7 @@ export class Student {
     id: number,
     name: string,
     gender: string,
-    dob: Date,
+    dob: string,
     course: string,
     marks: number,
     fee: number
@@ -20,7 +20,7 @@ export class Student {
   id: number;
   name: string;
   gender: string;
-  dob: Date;
+  dob: string;
   course: string;
   marks: number;
   fee: number;
